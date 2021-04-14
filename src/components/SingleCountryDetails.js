@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+// Material UI custom styles
 const useStyles = makeStyles(theme => ({
   countryDataContainer: {
     marginLeft: '80px',
@@ -39,6 +40,7 @@ const SingleCountryDetails = props => {
   const classes = useStyles();
 
   return (
+    // Render country details
     <div className={classes.countryDataContainer}>
       <h2 style={{ fontSize: '32px' }}>{props.name}</h2>
       <div className={classes.countryData}>
@@ -77,6 +79,7 @@ const SingleCountryDetails = props => {
           </p>
         )}
 
+        {/* Render border buttons */}
         {props.borders.map((border, index) => (
           <Button
             variant='outlined'

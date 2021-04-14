@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
+// Material UI custom styles
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: '264px',
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   media: {
     height: '160px',
     width: '264px',
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%',
   },
   listItem: {
     margin: 0,

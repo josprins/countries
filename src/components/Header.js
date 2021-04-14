@@ -1,13 +1,14 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined'
-import Brightness7Icon from '@material-ui/icons/Brightness7'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import NightsStayOutlinedIcon from '@material-ui/icons/NightsStayOutlined';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
 
+// Material UI custom styles
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -34,10 +35,10 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
-}))
+}));
 
 export default function ButtonAppBar(props) {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <AppBar
@@ -60,6 +61,7 @@ export default function ButtonAppBar(props) {
         </Typography>
         <Button color='inherit' onClick={props.handleDarkMode}>
           {props.darkMode ? (
+            // Switch between darkmode icon and lightmode icon
             <Brightness7Icon style={{ color: '#fafafa' }} />
           ) : (
             <NightsStayOutlinedIcon />
@@ -68,10 +70,11 @@ export default function ButtonAppBar(props) {
         </Button>
       </Toolbar>
     </AppBar>
-  )
+  );
 }
 
+// Style for handling darkmode on appbar
 const darkStyle = {
   backgroundColor: '#242424',
   color: '#fff',
-}
+};

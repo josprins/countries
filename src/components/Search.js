@@ -8,6 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
+// Material UI custom styles
 const useStyles = makeStyles(theme => ({
   root: {
     width: '480px',
@@ -60,6 +61,7 @@ export default function Search(props) {
 
   return (
     <div className={classes.searchContainer}>
+      {/* Input Form */}
       <form className={classes.inputForm}>
         <TextField
           id='full-width inputField'
@@ -68,6 +70,7 @@ export default function Search(props) {
           InputLabelProps={{
             shrink: true,
           }}
+          // Material UI's code for the icon placement
           InputProps={{
             startAdornment: (
               <InputAdornment position='start'>
@@ -80,6 +83,7 @@ export default function Search(props) {
         />
       </form>
 
+      {/* Select input menu to filter on region */}
       <FormControl className={classes.formControl}>
         <InputLabel id='demo-simple-select-label'>Filter by Region</InputLabel>
         <Select

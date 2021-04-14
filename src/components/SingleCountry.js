@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Container from '@material-ui/core/Container';
 
+// Material UI custom styles
 const useStyles = makeStyles(theme => ({
   backBtn: {
     color: 'black',
@@ -77,6 +78,7 @@ export default function SingleCountry(props) {
   const classes = useStyles();
 
   return (
+    // Render single country page
     <Container maxWidth='lg'>
       <Link
         to='/'
@@ -105,6 +107,7 @@ export default function SingleCountry(props) {
               languages={item.languages}
               borders={item.borders}
               population={item.population}
+              getBorderCountry={props.getBorderCountry}
             />
           </div>
         ))
