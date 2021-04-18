@@ -26,7 +26,6 @@ const useStyles = makeStyles(theme => ({
   flagImg: {
     height: '401px',
     width: '560px',
-    borderRadius: '10px',
   },
   loading: {
     width: '200px',

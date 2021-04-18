@@ -56,9 +56,14 @@ const SingleCountryDetails = props => {
         <p className={classes.dataItem}>
           <strong>Sub Region: </strong> {props.subregion}
         </p>
-        <p className={classes.dataItem}>
-          <strong>Capital: </strong> {props.capital}
-        </p>
+
+        {/* Render capital only if it is available*/}
+        {props.capital && (
+          <p className={classes.dataItem}>
+            <strong>Capital: </strong> {props.capital}
+          </p>
+        )}
+
         <p className={classes.dataItem}>
           <strong>Top Level Domain: </strong> {props.topLevelDomain}
         </p>

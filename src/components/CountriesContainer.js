@@ -44,9 +44,13 @@ const useStyles = makeStyles(theme => ({
 export default function AllCountries(props) {
   const classes = useStyles();
 
+  // Render the right array according to value of region
+  const countriesToRender =
+    props.region === '' ? props.countries : props.regionCountries;
+
   return (
     <div className={classes.cardContainer}>
-      {props.countries.map((country, index) => (
+      {countriesToRender.map((country, index) => (
         <Link
           to={`/${country.name}`}
           className={classes.cardLink}
@@ -73,9 +77,13 @@ export default function AllCountries(props) {
                 <ListItem className={classes.listItem}>
                   <strong>Region: </strong>&nbsp; {country.region}
                 </ListItem>
-                <ListItem className={classes.listItem}>
-                  <strong>Capital: </strong>&nbsp; {country.capital}
-                </ListItem>
+
+                {/* Render capital only if it is available*/}
+                {country.capital && (
+                  <ListItem className={classes.listItem}>
+                    <strong>Capital: </strong>&nbsp; {country.capital}
+                  </ListItem>
+                )}
               </List>
             </CardContent>
           </Card>

@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './components/Header';
 import Container from '@material-ui/core/Container';
 import Search from './components/Search';
-import AllCountries from './components/AllCountries';
+import CountriesContainer from './components/CountriesContainer';
 import SingleCountry from './components/SingleCountry';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import './css/main.css';
@@ -14,6 +14,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState([]);
   const [region, setRegion] = useState('');
+  const [regionCountries, setRegionCountries] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
   const palletType = darkMode ? 'dark' : 'light';
   const darkTheme = createMuiTheme({
@@ -35,13 +36,15 @@ function App() {
   };
 
   // Click on border button to get border country inside single country page
-  const getBorderCountry = async borderCountry => {
-    await axios
-      .get(`https://restcountries.eu/rest/v2/alpha/${borderCountry}`)
-      .then(res => setCountry([res.data]));
+  const getBorderCountry = borderCountry => {
+    const allCountriesCopy = countries;
+    const getBorderCountry = allCountriesCopy.filter(
+      country => country.alpha3Code === borderCountry
+    );
+    setCountry(getBorderCountry);
   };
 
-  // Use input value to search countries
+  // Use text input to search countries
   const searchCountries = e => {
     let searchTerm = e.target.value;
     const countryList = countries;
@@ -57,22 +60,26 @@ function App() {
   };
 
   // Filter countries on region
-  const filterRegion = async e => {
+  const filterRegion = e => {
     const region = e.target.value;
+    const allCountriesCopy = countries;
+    const getRegionCountries = allCountriesCopy.filter(
+      country => country.region === region
+    );
     if (region === 'allregions') {
       getCountries();
       setRegion('');
+      setRegionCountries([]);
     } else {
-      await axios
-        .get(`https://restcountries.eu/rest/v2/all`)
-        .then(res => setCountries(res.data.filter(x => x.region === region)));
       setRegion(region);
+      setRegionCountries(getRegionCountries);
     }
   };
 
-  // reset state when home link (title) is clicked
+  // Reset state when home link (title) is clicked
   const goHome = () => {
     setRegion('');
+    setRegionCountries([]);
     setCountry([]);
     getCountries();
   };
@@ -104,8 +111,10 @@ function App() {
                 filterRegion={filterRegion}
                 region={region}
               />
-              <AllCountries
+              <CountriesContainer
                 countries={countries}
+                region={region}
+                regionCountries={regionCountries}
                 getSingleCountry={getSingleCountry}
               />
             </Container>
